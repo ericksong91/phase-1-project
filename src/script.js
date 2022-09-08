@@ -1,72 +1,100 @@
+//DOM Load Listener
+
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOM has loaded!")
+})
+
 //Declare global variables here
 
-const searchUrl = "https://api.github.com/search/users?q="
-const repoUrl = "https://api.github.com/users/" //users/username/repos
-const form = document.querySelector("#github-form")
-const users = document.querySelector("#user-list")
-const repos = document.querySelector("#repos-list")
-const divRepos = document.querySelector('.card')
-let repoUser = " "
-let repoArray = []
+const searchUrl = "https://api.jikan.moe/v4/anime?q="
+const form = document.querySelector("#MAL-form")
+const animeList = document.querySelector("#animeList")
+//Configuring the GET Request with a custom header
 const configurationObject = {
     method: "GET",
     headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/vnd.github.v3+json",
+        "Content-Type": "application/json"
     }
-  };
+};
 
 //Event Listeners
 
-form.addEventListener("submit", searchFetch)
-document.addEventListener("click", repoClickHandler)
+form.addEventListener("submit", searchStart)
 
-//functions for searching users
+//Functions for Searching Anime Titles Below
 
-function searchFetch(e) {
+function searchStart(e) {
     e.preventDefault()
-    console.log("you submitted!")
+    //In case search string has spaces, splits it into an array
     let search = e.target.search.value
-    console.log(searchUrl + `${search}`, configurationObject)
-    return (fetch(searchUrl + `${search}`)
-        .then((resp) => resp.json())
-        .then((data) => searchHandler(data))
-        .catch(function () {
-            console.log("error displaying search results")
-            alert("Error displaying search results")
-        }))
+    //Check if anything was submitted
+    if (search.length === 0) {
+        console.log("Nothing Submitted")
+    } else {
+        console.log("You Submitted!")
+        //Changes any submissions with spaces to a long string with + inbetween for the URL
+        search = search.split(" ").join("+")
+        console.log(search)
+        console.log(searchUrl + `${search}` + '&sfw', configurationObject)
+        return fetchData(search)
+    }
+}
+
+function fetchData(e) {
+    return (
+        fetch(searchUrl + `${e}` + '&sfw')
+            //Converts JSON
+            .then((resp) => resp.json())
+            //Sends Object data to searchHandler function
+            .then((data) => searchHandler(data))
+            //Clears search field
+            .then(() => form.reset())
+            //Catches any errors that happen during this process
+            .catch(function () {
+                console.log("error displaying search results")
+                alert("Error displaying search results")
+            }))
 }
 
 function searchHandler(query) {
     console.log(query)
-    console.log(query.items)
-    let queryElements = createSearchElements(query.items)
+    console.log(query.data)
+    //Grabs Object > Data Array (Anime information)
+    //Sends it to a function that creates the HTML embed
+    let queryElements = createSearchElements(query.data)
+    //Returns to original fetch request after completing DOM manipulation
     return renderQuery(queryElements)
 }
 
 function createSearchElements(datas) {
-    console.log("Im in create search elements")
+    console.log("I'm in create search elements")
+    //Uses a map method to grab all of the titles, image URLs and Page URLs of the anime
+    //Returns variable i that includes all of the HTML needed for page insertion
+    //Includes a new div class of "card" which formats it according to the css style
+    //NOTE TO SELF: Change the Link to a button, add class card to styling sheet
     return datas.map((data) => {
         let i = `<div class = "card">
-        <h2>${data.login}</h2>
-        <img src=${data.avatar_url}><br>
-        <a href=${data.html_url} target="_blank">Profile Link</a><br>
-        <button class ="repo-btn" id="${data.login}">Display Repositories</button>
+        <h2>${data.title}</h2>
+        <img src=${data.images.jpg.image_url}><br>
+        <a href=${data.url} target="_blank">MAL Page</a><br>
         </div>`
         return i
     })
 }
 
 function renderQuery(e) {
-    console.log("i'm in render query")
-    users.innerHTML = " "
-    repos.innerHTML = " "
+    console.log("I'm in render query")
+    //Clears the page before insertion of new elements
+    animeList.innerHTML = " "
+    //forEach method to insert each element from Object
     e.forEach(element => {
         renderUlUsers(element)
     })
 }
 
 function renderUlUsers(element) {
-    console.log("im in render Ul")
-    users.innerHTML += element
+    console.log("I'm in render Ul")
+    //Renders in the unordered list with variable "i" from createSearchElements
+    //Inserts HTML
+    animeList.innerHTML += element
 }
