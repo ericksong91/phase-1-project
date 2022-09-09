@@ -75,8 +75,9 @@ function createSearchElements(datas) {
     return datas.map((data) => {
         let i = `
         <div class = "card">
-        <h2>${data.title}</h2>
-        <img src=${data.images.jpg.image_url} alt="${data.title}" title="${data.title}"><br>
+        <h3>${data.title}</h3>
+        <img src=${data.images.jpg.image_url} alt="${data.title}" 
+            title="${data.title}" class="animeImg"><br>
         <a href=${data.url} target="_blank">MAL Page</a><br>
         </div>`
         return i
