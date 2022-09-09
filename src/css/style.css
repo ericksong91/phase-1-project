@@ -30,13 +30,22 @@ a {
 body {
   background: rgb(30, 30, 30);
   block-size: auto;
-  padding:2rem;
+  padding:1rem;
+  margin:2rem;
 }
 
 #main {
   block-size: auto;
   background: rgb(47, 67, 98);
   padding:2rem;
+}
+
+#animeList {
+  margin:1rem;
+}
+
+.mainHeader {
+  margin-top:0.1rem
 }
 
 #MAL-form {
@@ -46,18 +55,31 @@ body {
 
 .card {
   text-align: center;
-  border: rgb(255, 255, 255) solid .5rem;
-  /* padding: 2rem; */
+  /* border: rgb(123, 123, 123) solid .1rem; */
+  background-color: rgba(73, 143, 249, 0.351);
   width: 20rem;
   height: 30rem;
   display: inline-grid;
   margin: 0.1rem;
+  margin-bottom: 0.3rem;
+  padding:0.1rem;
   justify-items: center;
 }
 
 .animeImg {
   height: 20rem;
   width: 15rem;
+}
+
+#bottom {
+  block-size: auto;
+  background: rgb(47, 67, 98);
+  padding:0.5rem;
+}
+
+.credits {
+  margin-top: 0.1rem;
+  margin-left:0.2rem;
 }
 
 
