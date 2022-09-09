@@ -1,8 +1,11 @@
 h1 {
-  color:white
+  color:white;
+  text-align:center;
 }
 
 h2 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 100;
   color:white
 }
 
@@ -12,10 +15,13 @@ a {
 
 body {
   background: rgb(38, 38, 38);
+  block-size: auto;
+  padding:2rem;
 }
 
 #main {
-  background: rgb(88, 88, 88);
+  block-size: auto;
+  background: rgb(47, 67, 98);
   padding:1rem;
 }
 
