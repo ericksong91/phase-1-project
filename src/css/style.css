@@ -1,11 +1,16 @@
 h1 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight:200;
   color:white;
   text-align:center;
+  background-color: rgb(47, 67, 98);
+  padding:1rem;
 }
 
 h2 {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: 100;
+  font-size: larger;
   color:white
 }
 
@@ -14,7 +19,7 @@ a {
 }
 
 body {
-  background: rgb(38, 38, 38);
+  background: rgb(30, 30, 30);
   block-size: auto;
   padding:2rem;
 }
