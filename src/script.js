@@ -73,9 +73,10 @@ function createSearchElements(datas) {
     //Includes a new div class of "card" which formats it according to the css style
     //NOTE TO SELF: Change the Link to a button, add class card to styling sheet
     return datas.map((data) => {
-        let i = `<div class = "card">
+        let i = `
+        <div class = "card">
         <h2>${data.title}</h2>
-        <img src=${data.images.jpg.image_url} alt="${data.title}"><br>
+        <img src=${data.images.jpg.image_url} alt="${data.title}" title="${data.title}"><br>
         <a href=${data.url} target="_blank">MAL Page</a><br>
         </div>`
         return i

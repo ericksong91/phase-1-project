@@ -7,8 +7,7 @@ h2 {
 }
 
 a {
-  color:white
-  
+  color:white 
 }
 
 body {
@@ -16,5 +15,17 @@ body {
 }
 
 #main {
-  background: rgb(88, 88, 88)
+  background: rgb(88, 88, 88);
+  padding:1rem;
+}
+
+.card {
+  text-align: center;
+  border: grey solid 1px;
+  padding: 2rem;
+  width: 15rem;
+  height: 30rem;
+  display: inline-grid;
+  margin: 2px;
+  justify-items: center;
 }
