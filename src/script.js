@@ -78,7 +78,7 @@ function createSearchElements(datas) {
         <h3>${data.title}</h3>
         <img src=${data.images.jpg.image_url} alt="${data.title}" 
             title="${data.title}" class="animeImg">
-        <a href=${data.url} target="_blank">MAL Page</a>
+        <button class="button">Learn More</button>
         </div>`
         return i
     })

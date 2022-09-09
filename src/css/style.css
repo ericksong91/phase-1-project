@@ -25,6 +25,18 @@ a {
   color:white 
 }
 
+.button {
+  background-color: rgba(73, 143, 249, 0.351);
+  border: none;
+  color: white;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  /* text-align: center;
+  text-decoration: none;
+  display: inline-block; */
+  font-size: 16px;
+}
+
 /* Body Formatting Below */
 
 body {
