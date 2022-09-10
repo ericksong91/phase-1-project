@@ -74,11 +74,13 @@ function createSearchElements(datas) {
     //NOTE TO SELF: Change the Link to a button, add class card to styling sheet
     return datas.map((data) => {
         let i = `
-        <div class = "card">
-        <h3>${data.title}</h3>
-        <img src=${data.images.jpg.image_url} alt="${data.title}" 
-            title="${data.title}" class="animeImg">
-        <button class="button">Learn More</button>
+        <div class="card">
+        <h3 class="animeTitle">${data.title}</h3>
+        <a href="${data.url}" target="_blank">
+            <img src=${data.images.jpg.image_url} alt="${data.title}" 
+                title="${data.title}" class="animeImg">
+        </a>
+        <button class="learnMore">Learn More</button>
         </div>`
         return i
     })
@@ -100,3 +102,7 @@ function renderUlUsers(element) {
     //Inserts HTML
     animeList.innerHTML += element
 }
+
+// For the More Info Page, I want it to clear the entire page and bring in a big card
+// Description of the show, Genre, Title, Alt. Titles, Ratings
+// Need 2 more eventlisteners

@@ -15,10 +15,22 @@ h2 {
   color:white
 }
 
-h3 {
+h3.animeTitle {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: 100;
+  color:white;
+  text-align: center;
+  display:list-item;
+  list-style:none;
+}
+
+label {
+  font-family:sans-serif;
+  font-size:0.9rem;
+  font-weight: bold;
+  font-style:italic;
   color:white
+
 }
 
 a {
@@ -54,8 +66,6 @@ body {
 }
 
 .card {
-  opacity:1.0;
-  text-align: center;
   /* border: rgb(123, 123, 123) solid .1rem; */
   background-color: rgba(73, 143, 249, 0.351);
   width: 20rem;
@@ -77,11 +87,19 @@ body {
 }
 
 .animeImg {
-  height: 18rem;
+  height: 20rem;
   width: 13rem;
+  transition-property: all;
+  transition-duration: 0.5s;
 }
 
-.button {
+.animeImg:hover{
+  height: 21rem;
+  width: 14rem;
+  cursor:pointer;
+}
+
+.learnMore {
   cursor:pointer;
   background-color: rgba(18, 30, 50, 0.45);
   border: none;
@@ -94,7 +112,7 @@ body {
   transition-duration:0.5s;
 }
 
-.button:hover{
+.learnMore:hover{
   background-color: rgba(168, 46, 74, 1);
 }
 
@@ -110,3 +128,7 @@ body {
 }
 
 
+/* Z index hierarchy:
+1. 1 is card
+2. 2 is hover over card
+3. 3 is text over img */
