@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
 const searchUrl = "https://api.jikan.moe/v4/anime?q="
 const form = document.querySelector("#MAL-form")
 const animeList = document.querySelector("#animeList")
+const titleRad = document.getElementById("titleRadio")
+const charRad = document.getElementById("charRadio")
 //Configuring the GET Request with a custom header
 const configurationObject = {
     method: "GET",
@@ -16,6 +18,10 @@ const configurationObject = {
         "Content-Type": "application/json"
     }
 };
+
+// Quick Notes
+// Element.setAttribute("checked", "") <-Use this to reset the checked attribute for the radio buttons
+// Element.removeAttribute("checked") <-Use this to remove the check on the radio button
 
 //Event Listeners
 
