@@ -3,7 +3,6 @@
 h1 {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight:200;
-  color:white;
   text-align:center;
   background-color: rgb(47, 67, 98);
   padding:1rem;
@@ -12,23 +11,28 @@ h1 {
 h2 {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: 100;
-  color:white
 }
 
 h3 {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: 100;
-  color:white;
 }
 
 h3.animeTitle {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: 100;
-  color:white;
   text-align: center;
   height:2rem;
   padding-right:0.2rem;
   padding-left:0.2rem;
+}
+
+a{
+  color:white;
+}
+
+a.lightMode{
+  color:black;
 }
 
 label {
@@ -36,19 +40,6 @@ label {
   font-size:0.9rem;
   font-weight: bold;
   font-style:italic;
-  color:white
-}
-
-a {
-  color:white 
-}
-
-.lightModeFont {
-  color:black;
-}
-
-#title.lightModeFont {
-  background: rgb(83, 145, 237);
 }
 
 /* Body Formatting Below */
@@ -58,10 +49,13 @@ body {
   block-size: auto;
   padding:1rem;
   margin:2rem;
+  color:white;
 }
 
-.lightModeBG {
+body.lightMode {
+  /* Set background and text color to light mode */
   background: rgb(245, 245, 245);
+  color:rgb(42, 42, 42);
 }
 
 #main {
@@ -70,14 +64,13 @@ body {
   padding:2rem;
 }
 
-#main.lightModeMain {
+#main.lightMode {
   background: rgb(83, 145, 237);
 }
 
-#bottom.lightModeMain {
+#title.lightMode {
   background: rgb(83, 145, 237);
 }
-
 
 #animeList {
   display:inline-flex;
@@ -108,6 +101,10 @@ body {
   z-index:0;
   transition-property:all;
   transition-duration:0.5s;
+}
+
+.card.lightMode{
+  background-color: rgba(47, 67, 98, 0.351);
 }
 
 .card:hover {
@@ -144,8 +141,8 @@ body {
 }
 
 .learnMore:hover{
-  height:3.5rem;
-  width:7.5rem;
+  height:3.3rem;
+  width:7.3rem;
   background-color: rgba(168, 46, 74, 1);
 }
 
@@ -214,6 +211,10 @@ input:checked + .sliderround:before {
   block-size: auto;
   background: rgb(47, 67, 98);
   padding:0.5rem;
+}
+
+#bottom.lightMode {
+  background: rgb(83, 145, 237);
 }
 
 .credits {

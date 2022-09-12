@@ -1,25 +1,18 @@
+
+//
 //DOM Load Listener
+//
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM has loaded!")
 })
 
+//
 //Declare global variables here, targetting DOM elements
+//
 
 const searchUrl = "https://api.jikan.moe/v4/anime?q="
-const form = document.querySelector("#MAL-form")
-const toggle = document.querySelector("#toggleMode > label > span")
-const body = document.querySelector("body")
-const main = document.querySelector("#main")
-const bottom = document.querySelector("#bottom")
-const title = document.querySelector("#title")
-const h1 = document.querySelector("h1")
-const h2 = document.querySelector("h2")
-const h3 = document.querySelector("h3")
-const animeList = document.querySelector("#animeList")
-const titleRad = document.getElementById("titleRadio")
-const charRad = document.getElementById("charRadio")
-let lightMode = 0;
+
 //Configuring the GET Request with a custom header, if needed
 const configurationObject = {
     method: "GET",
@@ -28,16 +21,29 @@ const configurationObject = {
     }
 };
 
-// Quick Notes
-// Element.setAttribute("checked", "") <-Use this to reset the checked attribute for the radio buttons
-// Element.removeAttribute("checked") <-Use this to remove the check on the radio button
+//Variables for targetting DOM elements
+const form = document.querySelector("#MAL-form")
+const toggle = document.querySelector("#toggleMode > label > span")
+const body = document.querySelector("#body")
+const main = document.querySelector("#main")
+const bottom = document.querySelector("#bottom")
+const title = document.querySelector("#title")
+const links = document.querySelector("a")
+const animeList = document.querySelector("#animeList")
+const titleRad = document.getElementById("#titleRadio")
+const charRad = document.getElementById("#charRadio")
+let lightMode = 0;
 
+//
 //Event Listeners
+//
 
 form.addEventListener("submit", searchStart)
 toggle.addEventListener("click", pageMode)
 
+//
 //Functions for Searching Anime Titles Below
+//
 
 function searchStart(e) {
     e.preventDefault()
@@ -110,6 +116,14 @@ function renderQuery(e) {
     e.forEach(element => {
         renderUlUsers(element)
     })
+
+    console.log(lightMode)
+
+    if (lightMode === 1) {
+        console.log("We're in lightmode!")
+        changeCards()
+    }
+
 }
 
 function renderUlUsers(element) {
@@ -119,30 +133,54 @@ function renderUlUsers(element) {
     animeList.innerHTML += element
 }
 
+//
 // Function for Changing Page to Dark/Light mode
-function pageMode(){
-    console.log("Toggled!")
-    if(lightMode === 0){
-        body.setAttribute("class", "lightModeBG")
-        main.setAttribute("class", "lightModeMain")
-        bottom.setAttribute("class", "lightModeMain")
-        title.setAttribute("class", "lightModeFont")
-        h1.setAttribute("class", "lightModeFont")
-        h2.setAttribute("class", "lightModeFont")
-        h3.setAttribute("class", "lightModeFont")
+//
 
+function pageMode() {
+    // let card = document.querySelector('.card')
+    console.log("You toggled!")
+    if (lightMode === 0) {
+        body.setAttribute("class", "lightMode")
+        main.setAttribute("class", "lightMode")
+        bottom.setAttribute("class", "lightMode")
+        title.setAttribute("class", "lightMode")
+        debugger
+        changeCards()
         lightMode = 1
-    }else{
-        body.removeAttribute("class", "lightModeBG")
-        main.removeAttribute("class", "lightModeMain")
-        bottom.removeAttribute("class", "lightModeMain")
-        title.removeAttribute("class", "lightModeFont")
-        h1.removeAttribute("class", "lightModeFont")
-        h2.removeAttribute("class", "lightModeFont")
-        h3.removeAttribute("class", "lightModeFont")
+        console.log(lightMode)
+    } else {
+        body.removeAttribute("class", "lightMode")
+        main.removeAttribute("class", "lightMode")
+        bottom.removeAttribute("class", "lightMode")
+        title.removeAttribute("class", "lightMode")
+        changeCards()
         lightMode = 0
+        console.log(lightMode)
     }
+
+    return lightMode
 }
+
+function changeCards() {
+
+    console.log("You're in change cards!")
+    console.log(lightMode)
+
+    let card = document.querySelectorAll(".card")
+
+    if(lightMode === 1){
+        for (let i = 0; i < card.length; i++) {
+            card[i].setAttribute("class", "card lightMode")
+        }
+    }else{
+        for (let i = 0; i < card.length; i++) {
+            card[i].setAttribute("class", "card")
+        }
+    }
+    return
+}
+
 
 // For the More Info Page, I want it to clear the entire page and bring in a big card
 // Description of the show, Genre, Title, Alt. Titles, Ratings
