@@ -15,13 +15,20 @@ h2 {
   color:white
 }
 
+h3 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 100;
+  color:white;
+}
+
 h3.animeTitle {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: 100;
   color:white;
   text-align: center;
-  /* display:list-item;
-  list-style:none; */
+  height:2rem;
+  padding-right:0.2rem;
+  padding-left:0.2rem;
 }
 
 label {
@@ -122,6 +129,68 @@ body {
   width:7.5rem;
   background-color: rgba(168, 46, 74, 1);
 }
+
+/* Style for Light/Dark mode toggle */
+
+.switch {
+  position:relative;
+  display:inline-block;
+  width:40px;
+  height:20px;
+}
+
+.switch input {
+  opacity:0;
+  height:0px;
+  width:0px;
+}
+
+.sliderround {
+  position:absolute;
+  cursor:pointer;
+  background-color: rgb(55, 55, 55);
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  -webkit-transition: .4s;
+  transition:.4s;
+}
+
+.sliderround:before {
+  position: absolute;
+  content: "";
+  border-style: solid;
+  border-color: rgb(62, 62, 62);
+  border-width:1px;
+  height: 20px;
+  width: 20px;
+  left: 1px;
+  bottom: 0px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .sliderround {
+  background-color: rgb(214, 214, 214);
+}
+
+input:checked + .sliderround:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+.sliderround {
+  border-radius: 20px;
+}
+
+.sliderround:before {
+  border-radius: 20px;
+}
+
+/* Styles for everything below main content */
 
 #bottom {
   block-size: auto;
