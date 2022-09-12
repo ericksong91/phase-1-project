@@ -4,14 +4,23 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM has loaded!")
 })
 
-//Declare global variables here
+//Declare global variables here, targetting DOM elements
 
 const searchUrl = "https://api.jikan.moe/v4/anime?q="
 const form = document.querySelector("#MAL-form")
+const toggle = document.querySelector("#toggleMode > label > span")
+const body = document.querySelector("body")
+const main = document.querySelector("#main")
+const bottom = document.querySelector("#bottom")
+const title = document.querySelector("#title")
+const h1 = document.querySelector("h1")
+const h2 = document.querySelector("h2")
+const h3 = document.querySelector("h3")
 const animeList = document.querySelector("#animeList")
 const titleRad = document.getElementById("titleRadio")
 const charRad = document.getElementById("charRadio")
-//Configuring the GET Request with a custom header
+let lightMode = 0;
+//Configuring the GET Request with a custom header, if needed
 const configurationObject = {
     method: "GET",
     headers: {
@@ -26,6 +35,7 @@ const configurationObject = {
 //Event Listeners
 
 form.addEventListener("submit", searchStart)
+toggle.addEventListener("click", pageMode)
 
 //Functions for Searching Anime Titles Below
 
@@ -107,6 +117,31 @@ function renderUlUsers(element) {
     //Renders in the unordered list with variable "i" from createSearchElements
     //Inserts HTML
     animeList.innerHTML += element
+}
+
+// Function for Changing Page to Dark/Light mode
+function pageMode(){
+    console.log("Toggled!")
+    if(lightMode === 0){
+        body.setAttribute("class", "lightModeBG")
+        main.setAttribute("class", "lightModeMain")
+        bottom.setAttribute("class", "lightModeMain")
+        title.setAttribute("class", "lightModeFont")
+        h1.setAttribute("class", "lightModeFont")
+        h2.setAttribute("class", "lightModeFont")
+        h3.setAttribute("class", "lightModeFont")
+
+        lightMode = 1
+    }else{
+        body.removeAttribute("class", "lightModeBG")
+        main.removeAttribute("class", "lightModeMain")
+        bottom.removeAttribute("class", "lightModeMain")
+        title.removeAttribute("class", "lightModeFont")
+        h1.removeAttribute("class", "lightModeFont")
+        h2.removeAttribute("class", "lightModeFont")
+        h3.removeAttribute("class", "lightModeFont")
+        lightMode = 0
+    }
 }
 
 // For the More Info Page, I want it to clear the entire page and bring in a big card

@@ -37,11 +37,18 @@ label {
   font-weight: bold;
   font-style:italic;
   color:white
-
 }
 
 a {
   color:white 
+}
+
+.lightModeFont {
+  color:black;
+}
+
+#title.lightModeFont {
+  background: rgb(83, 145, 237);
 }
 
 /* Body Formatting Below */
@@ -53,11 +60,24 @@ body {
   margin:2rem;
 }
 
+.lightModeBG {
+  background: rgb(245, 245, 245);
+}
+
 #main {
   block-size: auto;
   background: rgb(47, 67, 98);
   padding:2rem;
 }
+
+#main.lightModeMain {
+  background: rgb(83, 145, 237);
+}
+
+#bottom.lightModeMain {
+  background: rgb(83, 145, 237);
+}
+
 
 #animeList {
   display:inline-flex;
@@ -78,7 +98,6 @@ body {
 }
 
 .card {
-  /* border: rgb(123, 123, 123) solid .1rem; */
   background-color: rgba(73, 143, 249, 0.351);
   width: 20em;
   height: 30em;
@@ -168,7 +187,6 @@ body {
   left: -1px;
   bottom: -1px;
   background-color: white;
-  -webkit-transition: .4s;
   transition: .4s;
 }
 
