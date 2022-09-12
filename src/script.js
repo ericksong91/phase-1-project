@@ -117,12 +117,13 @@ function renderQuery(e) {
         renderUlUsers(element)
     })
 
-    console.log(lightMode)
-
     if (lightMode === 1) {
         console.log("We're in lightmode!")
+        let card = document.querySelectorAll(".card")
+        let learnMore = document.querySelectorAll(".learnMore")
         for (let i = 0; i < card.length; i++) {
             card[i].setAttribute("class", "card lightMode")
+            learnMore[i].setAttribute("class", "learnMore lightMode")
         }
     }
 
@@ -140,17 +141,14 @@ function renderUlUsers(element) {
 //
 
 function pageMode() {
-    // let card = document.querySelector('.card')
     console.log("You toggled!")
     if (lightMode === 0) {
         body.setAttribute("class", "lightMode")
         main.setAttribute("class", "lightMode")
         bottom.setAttribute("class", "lightMode")
         title.setAttribute("class", "lightMode")
-        debugger
         changeCards()
         lightMode = 1
-        console.log(lightMode)
     } else {
         body.removeAttribute("class", "lightMode")
         main.removeAttribute("class", "lightMode")
@@ -158,7 +156,6 @@ function pageMode() {
         title.removeAttribute("class", "lightMode")
         changeCards()
         lightMode = 0
-        console.log(lightMode)
     }
 
     return lightMode
@@ -168,16 +165,19 @@ function changeCards() {
 
     console.log("You're in change cards!")
     console.log(lightMode)
-
+    
+    let learnMore = document.querySelectorAll(".learnMore")
     let card = document.querySelectorAll(".card")
 
     if(lightMode === 0){
         for (let i = 0; i < card.length; i++) {
             card[i].setAttribute("class", "card lightMode")
+            learnMore[i].setAttribute("class", "learnMore lightMode")
         }
     }else{
         for (let i = 0; i < card.length; i++) {
             card[i].setAttribute("class", "card")
+            learnMore[i].setAttribute("class", "learnMore")
         }
     }
     return
