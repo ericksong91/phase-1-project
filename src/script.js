@@ -121,7 +121,9 @@ function renderQuery(e) {
 
     if (lightMode === 1) {
         console.log("We're in lightmode!")
-        changeCards()
+        for (let i = 0; i < card.length; i++) {
+            card[i].setAttribute("class", "card lightMode")
+        }
     }
 
 }
@@ -169,7 +171,7 @@ function changeCards() {
 
     let card = document.querySelectorAll(".card")
 
-    if(lightMode === 1){
+    if(lightMode === 0){
         for (let i = 0; i < card.length; i++) {
             card[i].setAttribute("class", "card lightMode")
         }
