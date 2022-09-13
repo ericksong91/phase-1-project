@@ -11,8 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
 //Declare global variables here, targetting DOM elements
 //
 
-const searchUrl = "https://api.jikan.moe/v4/anime?q=";
-const resObj = {};
+const animeURL = "https://api.jikan.moe/v4/anime?q=";
+const mangaURL = "https://api.jikan.moe/v4/manga?q=";
+let resObj = {}; //resObj will be the original array when I need to restore the page
 
 //Configuring the GET Request with a custom header, if needed
 const configurationObject = {
@@ -58,14 +59,14 @@ function searchStart(e) {
         //Changes any submissions with spaces to a long string with + inbetween for the URL
         search = search.split(" ").join("+")
         console.log(search)
-        console.log(searchUrl + `${search}` + '&sfw', configurationObject)
+        console.log(animeURL + `${search}` + '&sfw', configurationObject)
         return fetchData(search)
     }
 }
 
 function fetchData(e) {
     return (
-        fetch(searchUrl + `${e}` + '&sfw')
+        fetch(animeURL + `${e}` + '&sfw')
             //Converts JSON
             .then((resp) => resp.json())
             //Sends Object data to searchHandler function
@@ -82,6 +83,7 @@ function fetchData(e) {
 function searchHandler(query) {
     console.log(query);
     console.log(query.data);
+    resObj = query.data
     //Grabs Object > Data Array (Anime information)
     //Sends it to a function that creates the HTML embed
     let queryElements = createSearchElements(query.data);
@@ -96,7 +98,7 @@ function createSearchElements(datas) {
     //Includes a new div class of "card" which formats it according to the css style
     return datas.map((data) => {
         let i = `
-        <div class="card">
+        <div id="${data.mal_id} "class="card">
         <h3 class="animeTitle">${data.title}</h3>
         <a href="${data.url}" target="_blank">
             <img src=${data.images.jpg.image_url} alt="${data.title}" 
