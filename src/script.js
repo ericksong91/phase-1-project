@@ -35,8 +35,8 @@ const bottom = document.querySelector("#bottom");
 const title = document.querySelector("#title");
 const links = document.querySelector("a");
 const animeList = document.querySelector("#animeList");
-const titleRad = document.getElementById("#titleRadio");
-const charRad = document.getElementById("#charRadio");
+const titleRad = document.getElementById("#animeRadio");
+const charRad = document.getElementById("#mangaRadio");
 
 //
 //Event Listeners
@@ -44,9 +44,20 @@ const charRad = document.getElementById("#charRadio");
 
 form.addEventListener("submit", searchStart);
 toggle.addEventListener("click", pageMode);
+form.addEventListener("radio",  checkSearch)
 
 //
-//Functions for Searching Anime Titles Below
+//Function for determining anime/manga search
+//
+
+function checkSearch(e){
+    console.log("radio changed")
+    console.log(`${e}`)
+}
+
+
+//
+//Functions for Searching Titles Below
 //
 
 function searchStart(e) {
@@ -94,6 +105,13 @@ function searchHandler(query) {
     console.log(query);
     console.log(query.data);
     resObj = query.data
+
+    //Returns an error if no results found
+
+    if(query.data.length === 0){
+        return alert("No Results")
+    }
+
     //Grabs Object > Data Array (Anime information)
     //Sends it to a function that creates the HTML embed
     let queryElements = createSearchElements(query.data);
