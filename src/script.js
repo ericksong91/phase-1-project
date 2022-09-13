@@ -35,8 +35,8 @@ const bottom = document.querySelector("#bottom");
 const title = document.querySelector("#title");
 const links = document.querySelector("a");
 const animeList = document.querySelector("#animeList");
-const titleRad = document.getElementById("#animeRadio");
-const charRad = document.getElementById("#mangaRadio");
+const animeRad = document.getElementById("#animeRadio");
+const mangaRad = document.getElementById("#mangaRadio");
 
 //
 //Event Listeners
@@ -44,17 +44,7 @@ const charRad = document.getElementById("#mangaRadio");
 
 form.addEventListener("submit", searchStart);
 toggle.addEventListener("click", pageMode);
-form.addEventListener("radio",  checkSearch)
-
-//
-//Function for determining anime/manga search
-//
-
-function checkSearch(e){
-    console.log("radio changed")
-    console.log(`${e}`)
-}
-
+form.addEventListener("click", ((radio) => aniMan = radio.target.value)) //changes value of aniMan to true/false 
 
 //
 //Functions for Searching Titles Below
@@ -63,10 +53,10 @@ function checkSearch(e){
 function searchStart(e) {
     e.preventDefault()
     //Code to determine whether or not we're looking for manga/anime
-    if(aniMan === false){
+    if (aniMan === false) {
         console.log("Looking for Anime")
         url = animeURL
-    }else{
+    } else {
         console.log("Looking for Manga")
         url = mangaURL
     }
@@ -108,7 +98,7 @@ function searchHandler(query) {
 
     //Returns an error if no results found
 
-    if(query.data.length === 0){
+    if (query.data.length === 0) {
         return alert("No Results")
     }
 
@@ -195,16 +185,16 @@ function changeCards() {
 
     console.log("You're in change cards!")
     console.log(lightMode)
-    
+
     let learnMore = document.querySelectorAll(".learnMore");
     let card = document.querySelectorAll(".card");
 
-    if(lightMode === false){
+    if (lightMode === false) {
         for (let i = 0; i < card.length; i++) {
             card[i].setAttribute("class", "card lightMode");
             learnMore[i].setAttribute("class", "learnMore lightMode");
         }
-    }else{
+    } else {
         for (let i = 0; i < card.length; i++) {
             card[i].setAttribute("class", "card");
             learnMore[i].setAttribute("class", "learnMore");
