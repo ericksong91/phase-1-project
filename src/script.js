@@ -13,7 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const animeURL = "https://api.jikan.moe/v4/anime?q=";
 const mangaURL = "https://api.jikan.moe/v4/manga?q=";
+let url = 0; //will be used for searching for anime or manga later
 let resObj = {}; //resObj will be the original array when I need to restore the page
+let lightMode = false; //boolean for determining light/dark mode
+let aniMan = false; //boolean for determining anime/manga search.
 
 //Configuring the GET Request with a custom header, if needed
 const configurationObject = {
@@ -34,7 +37,6 @@ const links = document.querySelector("a");
 const animeList = document.querySelector("#animeList");
 const titleRad = document.getElementById("#titleRadio");
 const charRad = document.getElementById("#charRadio");
-let lightMode = 0;
 
 //
 //Event Listeners
@@ -49,6 +51,14 @@ toggle.addEventListener("click", pageMode);
 
 function searchStart(e) {
     e.preventDefault()
+    //Code to determine whether or not we're looking for manga/anime
+    if(aniMan === false){
+        console.log("Looking for Anime")
+        url = animeURL
+    }else{
+        console.log("Looking for Manga")
+        url = mangaURL
+    }
     //In case search string has spaces, splits it into an array
     let search = e.target.search.value
     //Check if anything was submitted
@@ -59,14 +69,14 @@ function searchStart(e) {
         //Changes any submissions with spaces to a long string with + inbetween for the URL
         search = search.split(" ").join("+")
         console.log(search)
-        console.log(animeURL + `${search}` + '&sfw', configurationObject)
+        console.log(url + `${search}` + '&sfw', configurationObject)
         return fetchData(search)
     }
 }
 
 function fetchData(e) {
     return (
-        fetch(animeURL + `${e}` + '&sfw')
+        fetch(url + `${e}` + '&sfw')
             //Converts JSON
             .then((resp) => resp.json())
             //Sends Object data to searchHandler function
@@ -119,7 +129,7 @@ function renderQuery(e) {
         renderDivTitles(element)
     })
 
-    if (lightMode === 1) {
+    if (lightMode === true) {
         console.log("We're in lightmode!")
         let card = document.querySelectorAll(".card")
         let learnMore = document.querySelectorAll(".learnMore")
@@ -144,20 +154,20 @@ function renderDivTitles(element) {
 
 function pageMode() {
     console.log("You toggled!")
-    if (lightMode === 0) {
+    if (lightMode === false) {
         body.setAttribute("class", "lightMode");
         main.setAttribute("class", "lightMode");
         bottom.setAttribute("class", "lightMode");
         title.setAttribute("class", "lightMode");
         changeCards();
-        lightMode = 1;
+        lightMode = true;
     } else {
         body.removeAttribute("class", "lightMode");
         main.removeAttribute("class", "lightMode");
         bottom.removeAttribute("class", "lightMode");
         title.removeAttribute("class", "lightMode");
         changeCards();
-        lightMode = 0;
+        lightMode = false;
     }
 
     return lightMode
@@ -171,7 +181,7 @@ function changeCards() {
     let learnMore = document.querySelectorAll(".learnMore");
     let card = document.querySelectorAll(".card");
 
-    if(lightMode === 0){
+    if(lightMode === false){
         for (let i = 0; i < card.length; i++) {
             card[i].setAttribute("class", "card lightMode");
             learnMore[i].setAttribute("class", "learnMore lightMode");
