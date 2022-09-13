@@ -73,8 +73,8 @@ function fetchData(e) {
             .then(() => form.reset())
             //Catches any errors that happen during this process
             .catch(function () {
-                console.log("error displaying search results")
-                alert("Error displaying search results")
+                console.log("Error")
+                alert("Error")
             }))
 }
 
@@ -93,7 +93,6 @@ function createSearchElements(datas) {
     //Uses a map method to grab all of the titles, image URLs and Page URLs of the anime
     //Returns variable i that includes all of the HTML needed for page insertion
     //Includes a new div class of "card" which formats it according to the css style
-    //NOTE TO SELF: Change the Link to a button, add class card to styling sheet
     return datas.map((data) => {
         let i = `
         <div class="card">
@@ -114,7 +113,7 @@ function renderQuery(e) {
     animeList.innerHTML = " "
     //forEach method to insert each element from Object
     e.forEach(element => {
-        renderUlUsers(element)
+        renderDivTitles(element)
     })
 
     if (lightMode === 1) {
@@ -129,8 +128,8 @@ function renderQuery(e) {
 
 }
 
-function renderUlUsers(element) {
-    console.log("I'm in render Ul")
+function renderDivTitles(element) {
+    console.log("I'm in render Div titles")
     //Renders in the unordered list with variable "i" from createSearchElements
     //Inserts HTML
     animeList.innerHTML += element
