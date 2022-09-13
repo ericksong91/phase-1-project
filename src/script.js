@@ -16,7 +16,7 @@ const mangaURL = "https://api.jikan.moe/v4/manga?q=";
 let url = 0; //will be used for searching for anime or manga later
 let resObj = {}; //resObj will be the original array when I need to restore the page
 let lightMode = false; //boolean for determining light/dark mode
-let aniMan = false; //boolean for determining anime/manga search.
+let aniMan = "animeTitles"; //Default to search for anime titles
 
 //Configuring the GET Request with a custom header, if needed
 const configurationObject = {
@@ -35,8 +35,7 @@ const bottom = document.querySelector("#bottom");
 const title = document.querySelector("#title");
 const links = document.querySelector("a");
 const animeList = document.querySelector("#animeList");
-const animeRad = document.getElementById("#animeRadio");
-const mangaRad = document.getElementById("#mangaRadio");
+const dropDown = document.querySelector("#dropDown")
 
 //
 //Event Listeners
@@ -44,7 +43,14 @@ const mangaRad = document.getElementById("#mangaRadio");
 
 form.addEventListener("submit", searchStart);
 toggle.addEventListener("click", pageMode);
-form.addEventListener("click", ((radio) => aniMan = radio.target.value)) //changes value of aniMan to true/false 
+dropDown.addEventListener("click", selectHandler)
+// form.addEventListener("click", ((radio) => aniMan = radio.target.value)) //changes value of aniMan to true/false 
+
+function selectHandler(e){
+    console.log("You radio'd")
+    console.log(`${e.target.value}`)
+    return aniMan = e.target.value;
+}
 
 //
 //Functions for Searching Titles Below
@@ -53,7 +59,8 @@ form.addEventListener("click", ((radio) => aniMan = radio.target.value)) //chang
 function searchStart(e) {
     e.preventDefault()
     //Code to determine whether or not we're looking for manga/anime
-    if (aniMan === false) {
+    console.log(aniMan)
+    if (aniMan === "animeTitles") {
         console.log("Looking for Anime")
         url = animeURL
     } else {

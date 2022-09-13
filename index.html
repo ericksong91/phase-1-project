@@ -13,14 +13,17 @@
     <!--First Header inside of the body  -->
     <h2 class="mainHeader">MyAnimeList Search</h2>
     <form id='MAL-form'>
-      <input id='search' type='text' name='search' placeholder="Search Anime Titles">
+      <input id='search' type='text' name='search' placeholder="Search Titles">
       <input type='submit' name='submit' />
-      <!-- Add Radio Buttons Here -->
-      <input type="radio" name="radio" value="false" id="animeRadio" checked>
-      <label for="animeSearch">Anime Search</label>
-      <input type="radio" name="radio" value="true" id="mangaRadio">
-      <label for="mangaSearch">Manga Search</label>
     </form>
+
+    <!-- Add Drop down here -->
+    <label for="Search">Search for:</label>
+    <select name="searchTitles" id="dropDown">
+      <option value="animeTitles">Anime Titles</option>
+      <option value="mangaTitles">Manga Titles</option>
+    </select>
+
     <!-- List starts here -->
     <div id="animeList">
     </div>
