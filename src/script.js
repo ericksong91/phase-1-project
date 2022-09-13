@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 //
-//Declare global variables here, targetting DOM elements
+//Global Variables
 //
 
 const animeURL = "https://api.jikan.moe/v4/anime?q=";
@@ -43,14 +43,7 @@ const dropDown = document.querySelector("#dropDown")
 
 form.addEventListener("submit", searchStart);
 toggle.addEventListener("click", pageMode);
-dropDown.addEventListener("click", selectHandler)
-// form.addEventListener("click", ((radio) => aniMan = radio.target.value)) //changes value of aniMan to true/false 
-
-function selectHandler(e){
-    console.log("You radio'd")
-    console.log(`${e.target.value}`)
-    return aniMan = e.target.value;
-}
+dropDown.addEventListener("click", ((select) => aniMan = select.target.value))
 
 //
 //Functions for Searching Titles Below

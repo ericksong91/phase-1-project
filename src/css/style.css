@@ -92,6 +92,10 @@ body.lightMode {
   margin: 1rem;
 }
 
+#selector {
+  margin-bottom:1rem;
+}
+
 .card {
   background-color: rgba(73, 143, 249, 0.351);
   width: 20em;
