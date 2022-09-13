@@ -103,6 +103,18 @@ body.lightMode {
   z-index:0;
   transition-property:background-color;
   transition-duration:0.5s;
+  animation: append-animate .5s linear;
+}
+
+@keyframes append-animate {
+    from{
+      /* transform: scaleX(0); */
+      opacity: 0;
+    }
+    to{
+      /* transform: scaleX(1); */
+      opacity:1;
+    }
 }
 
 .card.lightMode{
@@ -138,9 +150,8 @@ body.lightMode {
   margin: 0.5rem;
   font-size: 16px;
   font-weight:600;
-  transition-property: color;
-  transition-property: background-color;
-  transition-duration:0.5s;
+  transition-property: background-color, height, width, color;
+  transition-duration: 0.5s;
 }
 
 .learnMore:hover{
