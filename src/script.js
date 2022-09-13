@@ -43,7 +43,7 @@ const dropDown = document.querySelector("#dropDown")
 
 form.addEventListener("submit", searchStart);
 toggle.addEventListener("click", pageMode);
-dropDown.addEventListener("click", ((select) => aniMan = select.target.value))
+dropDown.addEventListener("change", ((select) => aniMan = select.target.value))
 
 //
 //Functions for Searching Titles Below
