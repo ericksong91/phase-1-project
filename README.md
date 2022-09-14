@@ -49,7 +49,7 @@ MyAnimeList (MAL) (https://myanimelist.net/)
 
 ## Author
 
-Currently a student at Flatiron School, this is my Phase 1 final project.
+This application is by Eric Song who is currently studying the Flex program at Flatiron School.
 
 Github - https://github.com/ericksong91
 
