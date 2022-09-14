@@ -33,8 +33,10 @@ p {
   font-size:10px;
 }
 
-a{
+a {
   color:white;
+  transition-property:color;
+  transition-duration: 0.5s;
 }
 
 a.lightMode{

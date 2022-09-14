@@ -33,7 +33,7 @@ const body = document.querySelector("#body");
 const main = document.querySelector("#main");
 const bottom = document.querySelector("#bottom");
 const title = document.querySelector("#title");
-const links = document.querySelector("a");
+const links = document.querySelectorAll("a");
 const animeList = document.querySelector("#animeList");
 const dropDown = document.querySelector("#dropDown")
 
@@ -112,7 +112,7 @@ function searchHandler(query) {
 function createSearchElements(datas) {
     console.log("I'm in create search elements")
     //Uses a map method to grab all of the titles, image URLs and Page URLs of the anime
-    //Returns variable i that includes all of the HTML needed for page insertion
+    //Returns variable i, that includes all of the HTML needed for page insertion
     //Includes a new div class of "card" which formats it according to the css style
     return datas.map((data) => {
         let i = `
@@ -167,6 +167,8 @@ function pageMode() {
         main.setAttribute("class", "lightMode");
         bottom.setAttribute("class", "lightMode");
         title.setAttribute("class", "lightMode");
+        links[0].setAttribute("class", "lightMode");
+        links[1].setAttribute("class", "lightMode");
         changeCards();
         lightMode = true;
     } else {
@@ -174,6 +176,8 @@ function pageMode() {
         main.removeAttribute("class", "lightMode");
         bottom.removeAttribute("class", "lightMode");
         title.removeAttribute("class", "lightMode");
+        links[0].removeAttribute("class", "lightMode");
+        links[1].removeAttribute("class", "lightMode");
         changeCards();
         lightMode = false;
     }
