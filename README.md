@@ -14,11 +14,15 @@ This simple application is designed to utilize the Jikan API (https://jikan.moe/
 
 4. Search results will display on the page
 
-5. Repeat steps 1-3 to display new search results
+5. Clicking on "Learn More" will direct you to the MyAnimeList page for the specified anime/manga.
 
-* Note: If you would like to change the page to light mode, scroll to the bottom of the page and hit the toggle
+6. Repeat steps 1-3 to display new search results
 
 ![Usage](/images/UsageA.gif)
+
+![Usage](/images/UsageC.gif)
+
+* Note: If you would like to change the page to light mode, scroll to the bottom of the page and hit the toggle
 
 ![Lightmode](/images/UsageB.gif)
 
@@ -36,6 +40,13 @@ Will be put on hold until there is time to implement future planned features.
 2. Display more than the first 25 search results either by:
     - Displaying all search results on one page
     - Ability to page through results, 25 at a time
+
+## Credits  
+
+Jikan API (https://jikan.moe/)
+
+MyAnimeList (MAL) (https://myanimelist.net/)
+
 
 ## Contributing 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
