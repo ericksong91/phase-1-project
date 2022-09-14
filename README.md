@@ -30,7 +30,8 @@ Will be put on hold until there is time to implement future planned features.
 
 ## Planned Features
 
-1. Display MAL Page Information without redirecting to the MAL page
+1. Display Anime/Manga Information without redirecting to the MAL page
+    - Information such as the title, synopsis, genre, air date, etc.
 
 2. Display more than the first 25 search results either by:
     - Displaying all search results on one page
