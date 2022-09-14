@@ -36,6 +36,7 @@ const title = document.querySelector("#title");
 const links = document.querySelectorAll("a");
 const animeList = document.querySelector("#animeList");
 const dropDown = document.querySelector("#dropDown")
+const LMButton = document.querySelector("learnMore")
 
 //
 //Event Listeners
@@ -44,6 +45,18 @@ const dropDown = document.querySelector("#dropDown")
 form.addEventListener("submit", searchStart);
 toggle.addEventListener("click", pageMode);
 dropDown.addEventListener("change", ((select) => aniMan = select.target.value))
+document.addEventListener("click", learnMoreListen)
+
+//
+//Function for Learn More Button
+//
+
+//Currently a placeholder until I add more features
+function learnMoreListen(e) {
+    if (e.target.className === "learnMore") {
+      console.log("You're learning more!")
+    }
+  }
 
 //
 //Functions for Searching Titles Below
@@ -122,7 +135,9 @@ function createSearchElements(datas) {
             <img src=${data.images.jpg.image_url} alt="${data.title}" 
                 title="${data.title}" class="animeImg">
         </a>
+        <a href="${data.url}" target="_blank">
         <button class="learnMore">Learn More</button>
+        </a>
         </div>`
         return i
     })
