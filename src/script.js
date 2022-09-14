@@ -70,14 +70,14 @@ function searchStart(e) {
         //Changes any submissions with spaces to a long string with + inbetween for the URL
         search = search.split(" ").join("+")
         console.log(search)
-        console.log(url + `${search}` + '&sfw', configurationObject)
+        console.log(url + `${search}` + '&sfw' + "&genres_exclude=12", configurationObject)
         return fetchData(search)
     }
 }
 
 function fetchData(e) {
     return (
-        fetch(url + `${e}` + '&sfw')
+        fetch(url + `${e}` + '&sfw' + "&genres_exclude=12")
             //Converts JSON
             .then((resp) => resp.json())
             //Sends Object data to searchHandler function
