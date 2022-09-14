@@ -47,6 +47,14 @@ Jikan API (https://jikan.moe/)
 
 MyAnimeList (MAL) (https://myanimelist.net/)
 
+## Author
+
+Currently a student at Flatiron School, this is my Phase 1 final project.
+
+Github - https://github.com/ericksong91
+
+Linkedin - https://www.linkedin.com/in/eric-song-45597062
+
 
 ## Contributing 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
