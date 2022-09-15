@@ -1,6 +1,6 @@
 
 //
-//DOM Load Listener
+//DOM Content Loaded
 //
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const animeURL = "https://api.jikan.moe/v4/anime?q=";
 const mangaURL = "https://api.jikan.moe/v4/manga?q=";
 let url = 0; //will be used for searching for anime or manga later
-let resObj = {}; //resObj will be the original array when I need to restore the page
+// let resObj = {}; //resObj will be the original array when I need to restore the page
 let lightMode = false; //boolean for determining light/dark mode
 let aniMan = "animeTitles"; //Default to search for anime titles
 
@@ -45,18 +45,18 @@ const LMButton = document.querySelector("learnMore")
 form.addEventListener("submit", searchStart);
 toggle.addEventListener("click", pageMode);
 dropDown.addEventListener("change", ((select) => aniMan = select.target.value))
-document.addEventListener("click", learnMoreListen)
+// document.addEventListener("click", learnMoreListen) //Will be for the Learn More button later
 
 //
 //Function for Learn More Button
 //
 
-//Currently a placeholder until I add more features
-function learnMoreListen(e) {
-    if (e.target.className === "learnMore") {
-      console.log("You're learning more!")
-    }
-  }
+// //Currently a placeholder until I add more features
+// function learnMoreListen(e) {
+//     if (e.target.className === "learnMore") {
+//       console.log("You're learning more!")
+//     }
+//   }
 
 //
 //Functions for Searching Titles Below
@@ -65,7 +65,6 @@ function learnMoreListen(e) {
 function searchStart(e) {
     e.preventDefault()
     //Code to determine whether or not we're looking for manga/anime
-    console.log(aniMan)
     if (aniMan === "animeTitles") {
         console.log("Looking for Anime")
         url = animeURL
@@ -107,7 +106,7 @@ function fetchData(e) {
 function searchHandler(query) {
     console.log(query);
     console.log(query.data);
-    resObj = query.data
+    // resObj = query.data //Possibly will use for a future update, to store the Obj
 
     //Returns an error if no results found
 
@@ -118,6 +117,8 @@ function searchHandler(query) {
     //Grabs Object > Data Array (Anime information)
     //Sends it to a function that creates the HTML embed
     let queryElements = createSearchElements(query.data);
+
+    // console.log(queryElements) //Log to see the innerHTML inserted into an array
     //Returns to original fetch request after completing DOM manipulation
     return renderQuery(queryElements)
 }
@@ -147,10 +148,18 @@ function renderQuery(e) {
     console.log("I'm in render query")
     //Clears the page before insertion of new elements
     animeList.innerHTML = " "
-    //forEach method to insert each element from Object
-    e.forEach(element => {
+    //map to insert each element from queryElements array into the DOM
+    //Not sure which is more efficient?
+    e.map(element => {
         renderDivTitles(element)
     })
+
+    //Used to use forEach instead of map, old code
+    // e.forEach(element => {
+    //     renderDivTitles(element)
+    // })
+
+    //Below checks if the site is already in light mode or not, then changes the css to match
 
     if (lightMode === true) {
         console.log("We're in lightmode!")
@@ -161,13 +170,12 @@ function renderQuery(e) {
             learnMore[i].setAttribute("class", "learnMore lightMode")
         }
     }
-
 }
 
 function renderDivTitles(element) {
     console.log("I'm in render Div titles")
-    //Renders in the unordered list with variable "i" from createSearchElements
-    //Inserts HTML
+    //Renders in the animeList div with variable "i" from createSearchElements
+    //Inserts HTML by adding each element of the queryElements array into the DOM
     animeList.innerHTML += element;
 }
 
@@ -202,12 +210,12 @@ function pageMode() {
 
 function changeCards() {
 
-    console.log("You're in change cards!")
-    console.log(lightMode)
+    //Checks what state lightmode is in for the cards
 
     let learnMore = document.querySelectorAll(".learnMore");
     let card = document.querySelectorAll(".card");
 
+    //For loop to change the div cards
     if (lightMode === false) {
         for (let i = 0; i < card.length; i++) {
             card[i].setAttribute("class", "card lightMode");
@@ -227,9 +235,8 @@ function changeCards() {
 // Function for Rendering a Larger Card for the Show's Info
 //
 
-
-
+//To be added later
 // For the More Info Page, I want it to clear the entire page and bring in a big card
 // Description of the show, Genre, Title, Alt. Titles, Ratings
-// Need 1 more eventlisteners
+
 
