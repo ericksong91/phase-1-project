@@ -5,6 +5,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM has loaded!");
+    //Placeholder in case it is needed in the future
 })
 
 //
