@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
 const animeURL = "https://api.jikan.moe/v4/anime?q=";
 const mangaURL = "https://api.jikan.moe/v4/manga?q=";
 let url = 0; //will be used for searching for anime or manga later
-// let resObj = {}; //resObj will be the original array when I need to restore the page
 let lightMode = false; //boolean for determining light/dark mode
 let aniMan = "animeTitles"; //Default to search for anime titles
 
@@ -49,7 +48,7 @@ dropDown.addEventListener("change", ((select) => aniMan = select.target.value))
 // document.addEventListener("click", learnMoreListen) //Will be for the Learn More button later
 
 //
-//Function for Learn More Button
+//Function for Learn More Button (Under Construction)
 //
 
 // //Currently a placeholder until I add more features
@@ -107,7 +106,6 @@ function fetchData(e) {
 function searchHandler(query) {
     console.log(query);
     console.log(query.data);
-    // resObj = query.data //Possibly will use for a future update, to store the Obj
 
     //Returns an error if no results found
 
@@ -119,7 +117,7 @@ function searchHandler(query) {
     //Sends it to a function that creates the HTML embed
     let queryElements = createSearchElements(query.data);
 
-    // console.log(queryElements) //Log to see the innerHTML inserted into an array
+    //console.log(queryElements) //Log to see the innerHTML inserted into an array
     //Returns to original fetch request after completing DOM manipulation
     return renderQuery(queryElements)
 }
@@ -128,7 +126,7 @@ function createSearchElements(datas) {
     console.log("I'm in create search elements")
     //Uses a map method to grab all of the titles, image URLs and Page URLs of the anime
     //Returns variable i, that includes all of the HTML needed for page insertion
-    //Includes a new div class of "card" which formats it according to the css style
+    //Includes a new div class of "card" which formats it according to the css style sheet
     return datas.map((data) => {
         let i = `
         <div id="${data.mal_id} "class="card">
