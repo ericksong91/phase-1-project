@@ -60,9 +60,9 @@ function searchStart(e) {
     }
 }
 
-function fetchData(e) {
+function fetchData(search) {
     return (
-        fetch(url + `${e}` + '&sfw' + "&genres_exclude=12")
+        fetch(url + `${search}` + '&sfw' + "&genres_exclude=12")
             .then((resp) => resp.json())
             .then((data) => searchHandler(data))
             .then(() => form.reset())
@@ -101,11 +101,11 @@ function createSearchElements(datas) {
     })
 }
 
-function renderQuery(e) {
+function renderQuery(arr) {
     console.log("I'm in render query")
     animeList.innerHTML = " "
 
-    e.forEach(element => {
+    arr.forEach(element => {
         renderDivTitles(element)
     })
 
