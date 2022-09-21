@@ -42,19 +42,20 @@ dropDown.addEventListener("change", ((select) => aniMan = select.target.value))
 function searchStart(e) {
     e.preventDefault()
     if (aniMan === "animeTitles") {
-        console.log("Looking for Anime")
+        // console.log("Looking for Anime")
         url = animeURL
     } else {
-        console.log("Looking for Manga")
+        // console.log("Looking for Manga")
         url = mangaURL
     }
 
     let search = e.target.search.value
 
     if (search.length === 0) {
-        console.log("Nothing Submitted")
+        // console.log("Nothing Submitted")
+        alert("Nothing Submitted")
     } else {
-        console.log("You Submitted!")
+        // console.log("You Submitted!")
         search = search.split(" ").join("+")
         return fetchData(search)
     }
@@ -67,14 +68,14 @@ function fetchData(search) {
             .then((data) => searchHandler(data))
             .then(() => form.reset())
             .catch(function () {
-                console.log("Error")
+                // console.log("Error")
                 alert("Error")
             }))
 }
 
 function searchHandler(query) {
-    console.log(query);
-    console.log(query.data);
+    // console.log(query);
+    // console.log(query.data);
 
     if (query.data.length === 0) {
         return alert("No Results")
@@ -84,7 +85,7 @@ function searchHandler(query) {
 }
 
 function createSearchElements(datas) {
-    console.log("I'm in create search elements")
+    // console.log("I'm in create search elements")
     return datas.map((data) => {
         let i = `
         <div id="${data.mal_id} "class="card">
@@ -102,7 +103,7 @@ function createSearchElements(datas) {
 }
 
 function renderQuery(arr) {
-    console.log("I'm in render query")
+    // console.log("I'm in render query")
     animeList.innerHTML = " "
 
     arr.forEach(element => {
@@ -110,7 +111,7 @@ function renderQuery(arr) {
     })
 
     if (lightMode === true) {
-        console.log("We're in lightmode!")
+        // console.log("We're in lightmode!")
         let card = document.querySelectorAll(".card")
         let learnMore = document.querySelectorAll(".learnMore")
         for (let i = 0; i < card.length; i++) {
@@ -121,7 +122,7 @@ function renderQuery(arr) {
 }
 
 function renderDivTitles(element) {
-    console.log("I'm in render Div titles")
+    // console.log("I'm in render Div titles")
     animeList.innerHTML += element;
 }
 
@@ -130,7 +131,7 @@ function renderDivTitles(element) {
 //
 
 function pageMode() {
-    console.log("You toggled!")
+    // console.log("You toggled!")
     if (lightMode === false) {
         body.setAttribute("class", "lightMode");
         main.setAttribute("class", "lightMode");
