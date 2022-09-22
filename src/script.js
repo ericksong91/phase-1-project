@@ -66,7 +66,6 @@ function fetchData(search) {
         fetch(url + `${search}` + '&sfw' + "&genres_exclude=12")
             .then((resp) => resp.json())
             .then((data) => searchHandler(data))
-            .then(() => form.reset())
             .catch(function () {
                 // console.log("Error")
                 alert("Error")
